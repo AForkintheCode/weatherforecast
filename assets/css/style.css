@@ -1,0 +1,15 @@
+.col{
+    padding: 5px;
+}
+
+.col-md-9{
+    padding: 5px;
+}
+
+.btn{
+    margin: 7px;
+}
+
+.btn-secondary {
+    color: black;
+}
