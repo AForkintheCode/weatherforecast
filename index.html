@@ -39,21 +39,26 @@
     </div>
     <!-- End Searchbar -->
     <hr>   
-    <div class = "col">
-      <div class="d-grid gap-2 col-11 mx-auto">
-        <div id = "city-choices" class="d-grid gap-2 col-11 mx-auto"></div> 
-      </div>
+    <div class = "col">      
+        <div id = "city-choices" class="d-grid gap-2 col-11 mx-auto"></div>       
     </div>                      
   </div>
   <!-- End Search and City Select -->
   <!-- Current City and 5-day Forecast -->
-  <div class = "col-md-9" id = "cCity">
-    <div class = "col-md-11 border border-dark">
+  <div class = "col-md-9" >
+    <div id = "cCity" class = "col-md-11 border border-dark">
       <h2 id = "currentCity"></h2>
       <p id = "currentDay"></p>
     </div>
-    <div class = "col-md-11">
+    <div id = "fiveday" class = "col-md-11">
       <h2>5 Day Forecast: </h2>
+      <div class = "row">
+        <div class="col border border-dark mx-3 day">Monday</div>
+        <div class="col border border-dark mx-3 day">Tuesday</div>
+        <div class="col border border-dark mx-3 day">Wednesday</div>
+        <div class="col border border-dark mx-3 day">Thursday</div>
+        <div class="col border border-dark mx-3 day">Friday</div>
+      </div>
     </div>
   </div>
   <!-- End Current City and 5-day Forecast -->

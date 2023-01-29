@@ -1,22 +1,29 @@
 $(document).ready(function (){
 var city; 
+
+//current city default mode
+document.getElementById("cCity").style.display = 'none'
+document.getElementById("fiveday").style.display = 'none'
+
 //search for a city
 $('#search').on("click", function(e) {  
   city = document.getElementById('cityName').value;
   console.log(city)
   let selectCity = city;
   // add city to choices
-  row = $(`<div class="row">`)
-  col1 = $(`<button class="btn btn-secondary" type="button">` + selectCity + `</button></div>`)
-  row.append(col1)
-  
-  $("#city-choices").append(row)
-  
+  col = $(`<button class="btn btn-secondary" type="button">` + selectCity + `</button></div>`)  
+  $("#city-choices").append(col)
+
+  document.getElementById("cCity").style.display = 'block';
+  document.getElementById("fiveday").style.display = 'block'; 
   $("#currentCity").append(city)
+  getApi();
 
 //get city deets
   function getApi() {
-    var requestUrl = `api.openweathermap.org/data/2.5/weather?q={` + city + `}&appid={ca20830d7cbe86ec9c4bfe66abe7a008}`
+    let key = '6d76fc1e41120a78b490437813c24634';
+    let units = 'imperial';
+    var requestUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}`;    
     fetch(requestUrl)
       .then(function (response) {
         return response.json();
@@ -25,6 +32,8 @@ $('#search').on("click", function(e) {
         console.log(data);
       });
 }
+
+
 
 });
 

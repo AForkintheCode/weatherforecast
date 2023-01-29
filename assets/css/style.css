@@ -13,3 +13,8 @@
 .btn-secondary {
     color: black;
 }
+
+.day{    
+    color: white;
+    background-color: rgb(108, 108, 112);    
+}
