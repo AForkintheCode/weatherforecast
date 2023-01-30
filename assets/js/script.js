@@ -5,6 +5,7 @@ var wind;
 var humid;
 var lat;
 var long;
+var cond;
 
 //current city default mode
 document.getElementById("cCity").style.display = 'none'
@@ -12,19 +13,24 @@ document.getElementById("fiveday").style.display = 'none'
 
 //search for a city
 $('#search').on("click", function(e) {  
+  
   city = document.getElementById('cityName').value;
   console.log(city)
   let selectCity = city;
   // add city to choices
+  //TODO check if already in city-choices  
   col = $(`<button class="btn btn-secondary" type="button">` + selectCity + `</button></div>`)  
   $("#city-choices").append(col)
-
+  
   document.getElementById("cCity").style.display = 'block';
   document.getElementById("fiveday").style.display = 'block'; 
 
   getWeather();      
 })
-  
+
+//select city to display 
+
+
 
 //calls weather api
   function getWeather() {
@@ -48,7 +54,8 @@ $('#search').on("click", function(e) {
         temp = data.main.temp;
         wind = data.wind.speed;
         humid = data.main.humidity;
-        document.getElementById('cityname').innerHTML = city + ' (' + today + ')';
+        cond = data.weather[0].icon;        
+        document.getElementById('cityname').innerHTML = city + ' (' + today + ') <img src="http://openweathermap.org/img/wn/' + cond + '@2x.png"></img>';
         document.getElementById('citytemp').innerHTML = 'Temp: ' + temp + '\xB0F';
         document.getElementById('citywind').innerHTML = 'Wind: ' + wind + ' mph';
         document.getElementById('cityhumid').innerHTML = 'Humidity: ' + humid + '%';
@@ -61,7 +68,7 @@ $('#search').on("click", function(e) {
             .then(function (data) {
               console.log(data);
               //display 5 day-forecast
-              let d1 = data.list[0].dt_txt;
+              let d1 = data.list[0].dt_txt;              
               let d1t = data.list[0].main.temp;              
               let d1w = data.list[0].wind.speed;
               let d1h = data.list[0].main.humidity;
@@ -82,16 +89,30 @@ $('#search').on("click", function(e) {
               let d5w = data.list[32].wind.speed;
               let d5h = data.list[32].main.humidity; 
 
+              //images
+              let d1i = data.list[0].weather[0].icon;
+              let d2i = data.list[8].weather[0].icon;
+              let d3i = data.list[16].weather[0].icon;
+              let d4i = data.list[24].weather[0].icon;
+              let d5i = data.list[32].weather[0].icon;
+              document.getElementById('d1-img').innerHTML = '<img src="http://openweathermap.org/img/wn/' + d1i + '@2x.png"></img>'
+              document.getElementById('d2-img').innerHTML = '<img src="http://openweathermap.org/img/wn/' + d2i + '@2x.png"></img>'
+              document.getElementById('d3-img').innerHTML = '<img src="http://openweathermap.org/img/wn/' + d3i + '@2x.png"></img>'
+              document.getElementById('d4-img').innerHTML = '<img src="http://openweathermap.org/img/wn/' + d4i + '@2x.png"></img>'
+              document.getElementById('d5-img').innerHTML = '<img src="http://openweathermap.org/img/wn/' + d5i + '@2x.png"></img>'
+
+
               //update forecast
               for (let i=1; i<=5; i++){
                 var st1 = `document.getElementById('day-` + i + `').innerHTML = d` + i + `;`
                 var st2 = `document.getElementById('d` + i + `-temp').innerHTML = 'Temp: ' + d` + i + `t + '\xB0F';`
                 var st3 = `document.getElementById('d` + i + `-wind').innerHTML = 'Wind: ' + d` + i + `w + ' mph';`
                 var st4 = `document.getElementById('d` + i + `-humid').innerHTML = 'Humidity: ' + d` + i + `h + '%';`
-                eval(st1);
+                eval(st1);                
                 eval(st2);
                 eval(st3);
-                eval(st4);              
+                eval(st4);  
+                
               }
             })   
           })      
