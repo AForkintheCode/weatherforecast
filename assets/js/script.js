@@ -49,7 +49,7 @@ $('#search').on("click", function(e) {
         wind = data.wind.speed;
         humid = data.main.humidity;
         document.getElementById('cityname').innerHTML = city + ' (' + today + ')';
-        document.getElementById('citytemp').innerHTML = 'Temp: ' + temp + '9\xB0F';
+        document.getElementById('citytemp').innerHTML = 'Temp: ' + temp + '\xB0F';
         document.getElementById('citywind').innerHTML = 'Wind: ' + wind + ' mph';
         document.getElementById('cityhumid').innerHTML = 'Humidity: ' + humid + '%';
           //function forecast()
@@ -62,15 +62,37 @@ $('#search').on("click", function(e) {
               console.log(data);
               //display 5 day-forecast
               let d1 = data.list[0].dt_txt;
+              let d1t = data.list[0].main.temp;              
+              let d1w = data.list[0].wind.speed;
+              let d1h = data.list[0].main.humidity;
               let d2 = data.list[8].dt_txt;
+              let d2t = data.list[8].main.temp;
+              let d2w = data.list[8].wind.speed;
+              let d2h = data.list[8].main.humidity;
               let d3 = data.list[16].dt_txt;
+              let d3t = data.list[16].main.temp;
+              let d3w = data.list[16].wind.speed;
+              let d3h = data.list[16].main.humidity;
               let d4 = data.list[24].dt_txt;
+              let d4t = data.list[24].main.temp;
+              let d4w = data.list[24].wind.speed;
+              let d4h = data.list[24].main.humidity;
               let d5 = data.list[32].dt_txt;
-              document.getElementById('day-1').innerHTML = d1;
-              document.getElementById('day-2').innerHTML = d2;
-              document.getElementById('day-3').innerHTML = d3;
-              document.getElementById('day-4').innerHTML = d4;
-              document.getElementById('day-5').innerHTML = d5;
+              let d5t = data.list[32].main.temp;
+              let d5w = data.list[32].wind.speed;
+              let d5h = data.list[32].main.humidity; 
+
+              //update forecast
+              for (let i=1; i<=5; i++){
+                var st1 = `document.getElementById('day-` + i + `').innerHTML = d` + i + `;`
+                var st2 = `document.getElementById('d` + i + `-temp').innerHTML = 'Temp: ' + d` + i + `t + '\xB0F';`
+                var st3 = `document.getElementById('d` + i + `-wind').innerHTML = 'Wind: ' + d` + i + `w + ' mph';`
+                var st4 = `document.getElementById('d` + i + `-humid').innerHTML = 'Humidity: ' + d` + i + `h + '%';`
+                eval(st1);
+                eval(st2);
+                eval(st3);
+                eval(st4);              
+              }
             })   
           })      
     }   
