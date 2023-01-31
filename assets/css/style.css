@@ -19,3 +19,7 @@
     background-color: rgb(108, 108, 112);    
 }
 
+#blue{
+    background-image: linear-gradient(to rgb(5, 5, 32), rgb(8, 1, 8), rgb(15, 7, 15));
+}
+
