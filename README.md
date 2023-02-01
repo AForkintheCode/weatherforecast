@@ -2,7 +2,7 @@
 A 5 day weather forecast for the city of your choice. 
 Click [here](https://aforkinthecode.github.io/weatherforecast/) to get started.
 
-![forecast](./assets/forecast.jpg)
+![forecast](./assets/forecast.JPG)
 
 # Installation
 n/a
