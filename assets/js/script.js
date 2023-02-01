@@ -17,6 +17,12 @@ document.getElementById("fiveday").style.display = 'none'
 $('#search').on("click", function(e) {  
   
   var city = document.getElementById('cityName').value;
+
+  if (city == null){
+    alert("Please enter a city.")
+    return false
+  }
+
   console.log(city)
   
   // reveal city display
@@ -29,9 +35,7 @@ $('#search').on("click", function(e) {
   console.log(cities)
   $('#city-choices').html("");
   buildButtons();
-
-
-
+  
 
   
 })
