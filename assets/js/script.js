@@ -18,9 +18,9 @@ $('#search').on("click", function(e) {
   
   var city = document.getElementById('cityName').value;
 
-  if (city == null){
+  if (city == null || city ==''){
     alert("Please enter a city.")
-    return false
+    return false;
   }
 
   console.log(city)
