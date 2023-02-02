@@ -70,7 +70,7 @@ function buildButtons(){
   function getWeather(city) {
     let key = '6d76fc1e41120a78b490437813c24634';
     let units = 'imperial';
-    var requestUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${key}`;    
+    var requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${key}`;    
 
     
     fetch(requestUrl)
@@ -93,7 +93,7 @@ function buildButtons(){
         document.getElementById('citywind').innerHTML = 'Wind: ' + wind + ' mph';
         document.getElementById('cityhumid').innerHTML = 'Humidity: ' + humid + '%';
           //function forecast()
-          var forecastUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&units=${units}&appid=${key}`;      
+          var forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&units=${units}&appid=${key}`;      
           fetch(forecastUrl)
             .then(function (response) {
               return response.json();
