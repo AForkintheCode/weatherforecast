@@ -88,7 +88,7 @@ function buildButtons(){
         wind = data.wind.speed;
         humid = data.main.humidity;
         cond = data.weather[0].icon;        
-        document.getElementById('cityname').innerHTML = city + ' (' + today + ') <img src="http://openweathermap.org/img/wn/' + cond + '@2x.png"></img>';
+        document.getElementById('cityname').innerHTML = city + ' (' + today + ') <img src="https://openweathermap.org/img/wn/' + cond + '@2x.png"></img>';
         document.getElementById('citytemp').innerHTML = 'Temp: ' + temp + '\xB0F';
         document.getElementById('citywind').innerHTML = 'Wind: ' + wind + ' mph';
         document.getElementById('cityhumid').innerHTML = 'Humidity: ' + humid + '%';
@@ -133,11 +133,11 @@ function buildButtons(){
               let d3i = data.list[16].weather[0].icon;
               let d4i = data.list[24].weather[0].icon;
               let d5i = data.list[32].weather[0].icon;
-              document.getElementById('d1-img').innerHTML = '<img src="http://openweathermap.org/img/wn/' + d1i + '@2x.png"></img>'
-              document.getElementById('d2-img').innerHTML = '<img src="http://openweathermap.org/img/wn/' + d2i + '@2x.png"></img>'
-              document.getElementById('d3-img').innerHTML = '<img src="http://openweathermap.org/img/wn/' + d3i + '@2x.png"></img>'
-              document.getElementById('d4-img').innerHTML = '<img src="http://openweathermap.org/img/wn/' + d4i + '@2x.png"></img>'
-              document.getElementById('d5-img').innerHTML = '<img src="http://openweathermap.org/img/wn/' + d5i + '@2x.png"></img>'             
+              document.getElementById('d1-img').innerHTML = '<img src="https://openweathermap.org/img/wn/' + d1i + '@2x.png"></img>'
+              document.getElementById('d2-img').innerHTML = '<img src="https://openweathermap.org/img/wn/' + d2i + '@2x.png"></img>'
+              document.getElementById('d3-img').innerHTML = '<img src="https://openweathermap.org/img/wn/' + d3i + '@2x.png"></img>'
+              document.getElementById('d4-img').innerHTML = '<img src="https://openweathermap.org/img/wn/' + d4i + '@2x.png"></img>'
+              document.getElementById('d5-img').innerHTML = '<img src="https://openweathermap.org/img/wn/' + d5i + '@2x.png"></img>'             
                             
               //update forecast
               for (let i=1; i<=5; i++){
