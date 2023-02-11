@@ -9,9 +9,11 @@ var cond;
 var cities = JSON.parse(localStorage.getItem('chooseCities')) || [];
 
 
+
 //current city default mode
-document.getElementById("cCity").style.display = 'none'
-document.getElementById("fiveday").style.display = 'none'
+document.getElementById("cc").style.display = 'none';
+document.getElementById("cCity").style.display = 'none';
+document.getElementById("fiveday").style.display = 'none';
 
 //search for a city
 $('#search').on("click", function(e) {  
@@ -26,6 +28,7 @@ $('#search').on("click", function(e) {
   console.log(city)
   
   // reveal city display
+  document.getElementById("cc").style.display = 'block';
   document.getElementById("cCity").style.display = 'block';
   document.getElementById("fiveday").style.display = 'block'; 
   
@@ -79,16 +82,14 @@ function buildButtons(){
       })
       .then(function (data) {
         console.log(data)
-        //function displayData()
-        dt = eval(data.dt * 1000)
-        today = new Date(dt).toLocaleDateString('en-US')
+        //function displayData()        
         lat = data.coord.lat
         long = data.coord.lon
         temp = data.main.temp;
         wind = data.wind.speed;
         humid = data.main.humidity;
         cond = data.weather[0].icon;        
-        document.getElementById('cityname').innerHTML = city + ' (' + today + ') <img src="https://openweathermap.org/img/wn/' + cond + '@2x.png"></img>';
+        document.getElementById('cityname').innerHTML = city + '<img src="https://openweathermap.org/img/wn/' + cond + '@2x.png"></img>';
         document.getElementById('citytemp').innerHTML = 'Temp: ' + temp + '\xB0F';
         document.getElementById('citywind').innerHTML = 'Wind: ' + wind + ' mph';
         document.getElementById('cityhumid').innerHTML = 'Humidity: ' + humid + '%';
@@ -101,38 +102,39 @@ function buildButtons(){
             .then(function (data) {
               console.log(data);
               //display 5 day-forecast
-              let d1 = eval(data.list[0].dt * 1000)
+              let d1 = eval(data.list[5].dt * 1000)              
               let c1 = new Date(d1).toLocaleDateString('en-US')            
-              let d1t = data.list[0].main.temp;              
-              let d1w = data.list[0].wind.speed;
-              let d1h = data.list[0].main.humidity;
-              let d2 = eval(data.list[8].dt * 1000)
+              console.log(c1)
+              let d1t = data.list[5].main.temp;              
+              let d1w = data.list[5].wind.speed;
+              let d1h = data.list[5].main.humidity;
+              let d2 = eval(data.list[13].dt * 1000)
               let c2 = new Date(d2).toLocaleDateString('en-US') 
-              let d2t = data.list[8].main.temp;
-              let d2w = data.list[8].wind.speed;
-              let d2h = data.list[8].main.humidity;
-              let d3 = eval(data.list[16].dt * 1000)
+              let d2t = data.list[13].main.temp;
+              let d2w = data.list[13].wind.speed;
+              let d2h = data.list[13].main.humidity;
+              let d3 = eval(data.list[21].dt * 1000)
               let c3 = new Date(d3).toLocaleDateString('en-US') 
-              let d3t = data.list[16].main.temp;
-              let d3w = data.list[16].wind.speed;
-              let d3h = data.list[16].main.humidity;
-              let d4 = eval(data.list[24].dt * 1000)
+              let d3t = data.list[21].main.temp;
+              let d3w = data.list[21].wind.speed;
+              let d3h = data.list[21].main.humidity;
+              let d4 = eval(data.list[29].dt * 1000)
               let c4 = new Date(d4).toLocaleDateString('en-US') 
-              let d4t = data.list[24].main.temp;
-              let d4w = data.list[24].wind.speed;
-              let d4h = data.list[24].main.humidity;
-              let d5 = eval(data.list[32].dt * 1000)
+              let d4t = data.list[29].main.temp;
+              let d4w = data.list[29].wind.speed;
+              let d4h = data.list[29].main.humidity;
+              let d5 = eval(data.list[37].dt * 1000)
               let c5 = new Date(d5).toLocaleDateString('en-US') 
-              let d5t = data.list[32].main.temp;
-              let d5w = data.list[32].wind.speed;
-              let d5h = data.list[32].main.humidity; 
+              let d5t = data.list[37].main.temp;
+              let d5w = data.list[37].wind.speed;
+              let d5h = data.list[37].main.humidity; 
 
               //images
-              let d1i = data.list[0].weather[0].icon;
-              let d2i = data.list[8].weather[0].icon;
-              let d3i = data.list[16].weather[0].icon;
-              let d4i = data.list[24].weather[0].icon;
-              let d5i = data.list[32].weather[0].icon;
+              let d1i = data.list[5].weather[0].icon;
+              let d2i = data.list[13].weather[0].icon;
+              let d3i = data.list[21].weather[0].icon;
+              let d4i = data.list[29].weather[0].icon;
+              let d5i = data.list[37].weather[0].icon;
               document.getElementById('d1-img').innerHTML = '<img src="https://openweathermap.org/img/wn/' + d1i + '@2x.png"></img>'
               document.getElementById('d2-img').innerHTML = '<img src="https://openweathermap.org/img/wn/' + d2i + '@2x.png"></img>'
               document.getElementById('d3-img').innerHTML = '<img src="https://openweathermap.org/img/wn/' + d3i + '@2x.png"></img>'
