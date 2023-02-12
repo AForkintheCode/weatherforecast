@@ -17,7 +17,7 @@ document.getElementById("fiveday").style.display = 'none';
 
 //search for a city
 $('#search').on("click", function(e) {  
-  
+
   var city = document.getElementById('cityName').value;
 
   if (city == null || city ==''){
@@ -37,11 +37,12 @@ $('#search').on("click", function(e) {
   localStorage.setItem('citiesLocal', JSON.stringify(cities))
   console.log(cities)
   $('#city-choices').html("");
-  buildButtons();
-  
+  buildButtons();       
+});
 
-  
-})
+
+
+
 
 // select city to display 
 
